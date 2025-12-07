@@ -1,0 +1,228 @@
+import { TrendingUp, Users, Eye, Target, Sparkles, RefreshCw } from 'lucide-react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
+import { Badge } from './ui/badge';
+import { Button } from './ui/button';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+
+const performanceData = [
+  { month: 'Apr', conversionRate: 7.2, activeMarkets: 18, modelAccuracy: 91.5 },
+  { month: 'May', conversionRate: 7.8, activeMarkets: 20, modelAccuracy: 92.1 },
+  { month: 'Jun', conversionRate: 8.1, activeMarkets: 22, modelAccuracy: 92.8 },
+  { month: 'Jul', conversionRate: 8.6, activeMarkets: 21, modelAccuracy: 93.4 },
+  { month: 'Aug', conversionRate: 8.9, activeMarkets: 23, modelAccuracy: 93.8 },
+  { month: 'Sep', conversionRate: 9.2, activeMarkets: 24, modelAccuracy: 94.1 },
+  { month: 'Oct', conversionRate: 9.4, activeMarkets: 24, modelAccuracy: 94.2 },
+];
+
+const recentPredictions = [
+  { date: 'Oct 25, 2025', market: 'United States', product: 'Skincare Serum', conversion: '9.2%', accuracy: '98%' },
+  { date: 'Oct 25, 2025', market: 'United Kingdom', product: 'Fitness Apparel', conversion: '7.8%', accuracy: '94%' },
+  { date: 'Oct 24, 2025', market: 'Germany', product: 'Smart Watch', conversion: '6.5%', accuracy: '92%' },
+  { date: 'Oct 23, 2025', market: 'France', product: 'Organic Coffee', conversion: '11.3%', accuracy: '97%' },
+  { date: 'Oct 23, 2025', market: 'Canada', product: 'Gaming Peripherals', conversion: '8.4%', accuracy: '95%' },
+];
+
+export function Dashboard() {
+  return (
+    <div className="space-y-6">
+      {/* Welcome Section */}
+      <div>
+        <h2 className="text-slate-900 mb-1">Welcome to Influencer Conversion Intelligence</h2>
+        <p className="text-slate-600">Track your AI-powered influencer marketing predictions and performance</p>
+      </div>
+
+      {/* Stats Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <Card className="border-slate-200 bg-gradient-to-br from-slate-900 to-slate-800 text-white relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16" />
+          <CardHeader className="pb-2 relative z-10">
+            <div className="flex items-center justify-between">
+              <CardDescription className="text-slate-300">Global ROI</CardDescription>
+              <TrendingUp className="w-4 h-4 text-white" />
+            </div>
+          </CardHeader>
+          <CardContent className="relative z-10">
+            <div className="text-3xl mb-2">342%</div>
+            <Badge className="bg-green-500 text-white hover:bg-green-600 text-xs">
+              +18%
+            </Badge>
+          </CardContent>
+        </Card>
+
+        <Card className="border-slate-200">
+          <CardHeader className="pb-2">
+            <div className="flex items-center justify-between">
+              <CardDescription>Average Conversion Rate</CardDescription>
+              <Target className="w-4 h-4 text-blue-500" />
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="text-slate-900">8.4%</div>
+            <Badge className="bg-green-100 text-green-700 hover:bg-green-200 text-xs mt-2">
+              +5.1%
+            </Badge>
+          </CardContent>
+        </Card>
+
+        <Card className="border-slate-200">
+          <CardHeader className="pb-2">
+            <div className="flex items-center justify-between">
+              <CardDescription>Active Markets</CardDescription>
+              <Eye className="w-4 h-4 text-blue-500" />
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="text-slate-900">24</div>
+            <Badge className="bg-green-100 text-green-700 hover:bg-green-200 text-xs mt-2">
+              +3
+            </Badge>
+          </CardContent>
+        </Card>
+
+        <Card className="border-slate-200">
+          <CardHeader className="pb-2">
+            <div className="flex items-center justify-between">
+              <CardDescription>AI Model Accuracy</CardDescription>
+              <Sparkles className="w-4 h-4 text-blue-500" />
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="text-slate-900">94.2%</div>
+            <Badge className="bg-green-100 text-green-700 hover:bg-green-200 text-xs mt-2">
+              +1.2%
+            </Badge>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* AI Note */}
+        <Card className="border-slate-200 lg:col-span-1">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <CardTitle className="flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-blue-600" />
+                Note Generated by AI
+              </CardTitle>
+              <Button variant="ghost" size="sm" className="h-8">
+                <RefreshCw className="w-4 h-4" />
+              </Button>
+            </div>
+            <p className="text-xs text-blue-600">Updated 2 hours ago · Powered by IAM Predictive Engine</p>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <div className="flex items-start gap-2 text-sm">
+              <span className="text-slate-400 mt-1">↗</span>
+              <p className="text-slate-600">Global average ROI has been decreasing due to recent interest rate cuts.</p>
+            </div>
+            <div className="flex items-start gap-2 text-sm">
+              <span className="text-green-600 mt-1">✓</span>
+              <p className="text-slate-600">Asia-Pacific markets show stronger influencer engagement, despite lower conversion.</p>
+            </div>
+            <div className="flex items-start gap-2 text-sm">
+              <span className="text-blue-600 mt-1">•</span>
+              <p className="text-slate-600">Beauty and skincare categories remain stable with consistent conversion rates.</p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Performance Chart */}
+        <Card className="border-slate-200 lg:col-span-2">
+          <CardHeader>
+            <CardTitle>Performance by Product Category</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer width="100%" height={250}>
+              <LineChart data={performanceData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                <XAxis dataKey="month" stroke="#64748b" style={{ fontSize: '12px' }} />
+                <YAxis stroke="#64748b" style={{ fontSize: '12px' }} />
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: 'white',
+                    border: '1px solid #e2e8f0',
+                    borderRadius: '8px',
+                    fontSize: '12px',
+                  }}
+                />
+                <Legend 
+                  wrapperStyle={{ fontSize: '12px' }}
+                  iconType="line"
+                />
+                <Line
+                  type="monotone"
+                  dataKey="conversionRate"
+                  name="Average Conversion Rate"
+                  stroke="#ef4444"
+                  strokeWidth={2}
+                  dot={{ fill: '#ef4444', r: 3 }}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="activeMarkets"
+                  name="Active Markets"
+                  stroke="#3b82f6"
+                  strokeWidth={2}
+                  dot={{ fill: '#3b82f6', r: 3 }}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="modelAccuracy"
+                  name="AI Model Accuracy"
+                  stroke="#8b5cf6"
+                  strokeWidth={2}
+                  dot={{ fill: '#8b5cf6', r: 3 }}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Recent Predictions */}
+      <Card className="border-slate-200">
+        <CardHeader>
+          <CardTitle>Recent Predictions & Reports</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead className="border-b border-slate-200">
+                <tr>
+                  <th className="text-left p-3 text-sm text-slate-600">Date</th>
+                  <th className="text-left p-3 text-sm text-slate-600">Market</th>
+                  <th className="text-left p-3 text-sm text-slate-600">Product</th>
+                  <th className="text-left p-3 text-sm text-slate-600">Predicted Conversion</th>
+                  <th className="text-left p-3 text-sm text-slate-600">Accuracy</th>
+                </tr>
+              </thead>
+              <tbody>
+                {recentPredictions.map((prediction, index) => (
+                  <tr key={index} className="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                    <td className="p-3 text-sm text-slate-600">{prediction.date}</td>
+                    <td className="p-3 text-sm text-slate-900">{prediction.market}</td>
+                    <td className="p-3 text-sm text-slate-900">{prediction.product}</td>
+                    <td className="p-3 text-sm text-slate-900">{prediction.conversion}</td>
+                    <td className="p-3">
+                      <Badge
+                        className={
+                          parseInt(prediction.accuracy) >= 95
+                            ? 'bg-green-100 text-green-700 hover:bg-green-200'
+                            : parseInt(prediction.accuracy) >= 90
+                            ? 'bg-blue-100 text-blue-700 hover:bg-blue-200'
+                            : 'bg-yellow-100 text-yellow-700 hover:bg-yellow-200'
+                        }
+                      >
+                        {prediction.accuracy}
+                      </Badge>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
