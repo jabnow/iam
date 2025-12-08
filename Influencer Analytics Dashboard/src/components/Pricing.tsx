@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import { Check, Download, Send, Zap, TrendingUp, Globe, Users } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
@@ -6,7 +6,7 @@ import { Badge } from './ui/badge';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Textarea } from './ui/textarea';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
 
 export function Pricing() {
   const [contactForm, setContactForm] = useState({
@@ -20,7 +20,7 @@ export function Pricing() {
     toast.success('Generating your business report... Download will begin shortly.');
   };
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = (e: FormEvent) => {
     e.preventDefault();
     toast.success('Message sent! Our team will contact you within 24 hours.');
     setContactForm({
@@ -47,7 +47,7 @@ export function Pricing() {
             <CardTitle>Starter</CardTitle>
             <CardDescription>Perfect for small businesses getting started</CardDescription>
             <div className="mt-4">
-              <div className="text-4xl text-slate-900">$299</div>
+              <div className="text-4xl text-slate-900">$2.99</div>
               <p className="text-sm text-slate-600 mt-1">per month</p>
             </div>
           </CardHeader>
@@ -91,7 +91,7 @@ export function Pricing() {
             <CardTitle>Professional</CardTitle>
             <CardDescription>For growing brands and agencies</CardDescription>
             <div className="mt-4">
-              <div className="text-4xl text-slate-900">$799</div>
+              <div className="text-4xl text-slate-900">$7.99</div>
               <p className="text-sm text-slate-600 mt-1">per month</p>
             </div>
           </CardHeader>
@@ -210,7 +210,7 @@ export function Pricing() {
                 </li>
               </ul>
               <div className="pt-4">
-                <div className="text-2xl text-slate-900">$199</div>
+                <div className="text-2xl text-slate-900">$1.99</div>
                 <p className="text-xs text-slate-600">one-time purchase</p>
               </div>
               <Button className="w-full bg-purple-600 hover:bg-purple-700">
@@ -245,7 +245,7 @@ export function Pricing() {
                 </li>
               </ul>
               <div className="pt-4">
-                <div className="text-2xl text-slate-900">$349</div>
+                <div className="text-2xl text-slate-900">$3.49</div>
                 <p className="text-xs text-slate-600">per month</p>
               </div>
               <Button className="w-full bg-orange-600 hover:bg-orange-700">
@@ -280,7 +280,7 @@ export function Pricing() {
                 </li>
               </ul>
               <div className="pt-4">
-                <div className="text-2xl text-slate-900">$499</div>
+                <div className="text-2xl text-slate-900">$4.99</div>
                 <p className="text-xs text-slate-600">per month</p>
               </div>
               <Button className="w-full bg-green-600 hover:bg-green-700">
@@ -305,7 +305,7 @@ export function Pricing() {
               </CardDescription>
             </div>
             <div className="text-right">
-              <div className="text-3xl text-slate-900">$149</div>
+              <div className="text-3xl text-slate-900">$9.99</div>
               <p className="text-sm text-slate-600">one-time</p>
             </div>
           </div>
