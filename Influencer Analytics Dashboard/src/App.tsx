@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { LayoutDashboard, TrendingUp, Zap, LineChart, Settings as SettingsIcon, CreditCard, ChevronDown, User, LogOut } from 'lucide-react';
+import { LayoutDashboard, TrendingUp, Zap, LineChart, Settings as SettingsIcon, CreditCard, ChevronDown, User, LogOut, Calendar } from 'lucide-react';
 import { Dashboard } from './components/Dashboard';
 import { Analytics } from './components/Analytics';
 import { Community } from './components/Community';
 import { Simulator } from './components/Simulator';
 import { MarketIntelligence } from './components/MarketIntelligence';
+import { Campaigns } from './components/Campaigns';
 import { Homepage } from './components/Homepage';
 import { SignIn } from './components/SignIn';
 import { Onboarding } from './components/Onboarding';
@@ -136,6 +137,10 @@ export default function App() {
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
+                <DropdownMenuItem onClick={() => setActiveTab('campaigns')}>
+                  <Calendar className="w-4 h-4 mr-2" />
+                  Campaigns
+                </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setActiveTab('pricing')}>
                   <CreditCard className="w-4 h-4 mr-2" />
                   Pricing
@@ -206,6 +211,7 @@ export default function App() {
         {activeTab === 'simulator' && <Simulator onViewRecommendations={handleViewRecommendations} simulatorData={simulatorData} />}
         {activeTab === 'market' && <MarketIntelligence />}
         {activeTab === 'dashboard' && <Dashboard />}
+        {activeTab === 'campaigns' && <Campaigns />}
         {activeTab === 'pricing' && <Pricing />}
         {activeTab === 'settings' && <Settings />}
         {activeTab === 'analytics' && <Analytics />}
