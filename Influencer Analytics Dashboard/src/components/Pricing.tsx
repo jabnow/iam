@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, FormEvent, ChangeEvent } from 'react';
 import { Check, Download, Send, Zap, TrendingUp, Globe, Users } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
@@ -20,7 +20,7 @@ export function Pricing() {
     toast.success('Generating your business report... Download will begin shortly.');
   };
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = (e: FormEvent) => {
     e.preventDefault();
     toast.success('Message sent! Our team will contact you within 24 hours.');
     setContactForm({
