@@ -53,6 +53,8 @@
       },
       "scripts": {
             "dev": "vite",
-            "build": "vite build"
+            "build": "vite build",
+            "preview": "vite preview",
+            "vercel-build": "npm install vite@6.3.5 && vite build"
       }
 }
