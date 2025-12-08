@@ -1,8 +1,9 @@
-import { TrendingUp, Users, DollarSign, Target, ArrowUp, ArrowDown } from 'lucide-react';
+import { TrendingUp, Users, DollarSign, Target, ArrowUp, ArrowDown, BarChart3, MessageSquare, Heart, TrendingUp as TrendingIcon } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { Microtrends } from './Microtrends';
+import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 
 const trendingCategories = [
   {
@@ -79,6 +80,33 @@ const platformStats = [
   { platform: 'TikTok', avgROI: '342%', topTier: 'Nano', engagement: '8.9%' },
   { platform: 'YouTube', avgROI: '198%', topTier: 'Mega', engagement: '4.2%' },
   { platform: 'Twitter', avgROI: '156%', topTier: 'Micro', engagement: '3.1%' },
+];
+
+const weeklyData = [
+  { date: '2025-07-29', posts: 45, performance: 9800 },
+  { date: '2025-08-05', posts: 78, performance: 6200 },
+  { date: '2025-08-12', posts: 55, performance: 7400 },
+  { date: '2025-08-19', posts: 52, performance: 8800 },
+  { date: '2025-08-26', posts: 82, performance: 34200 },
+  { date: '2025-09-02', posts: 68, performance: 33800 },
+  { date: '2025-09-09', posts: 58, performance: 16400 },
+  { date: '2025-09-16', posts: 72, performance: 59800 },
+  { date: '2025-09-23', posts: 215, performance: 19200 },
+];
+
+const contentCategories = [
+  { name: 'Tutorial', posts: 202, value: 49.3, avgViews: '28.2K', score: 67, color: '#FF6B6B' },
+  { name: 'Review', posts: 151, value: 36.8, avgViews: '25.5K', score: 77, color: '#4ECDC4' },
+  { name: 'Daily', posts: 40, value: 9.8, avgViews: '34.4K', score: 100, color: '#45B7D1' },
+  { name: 'Unboxing', posts: 11, value: 2.7, avgViews: '20.5K', score: 5, color: '#96CEB4' },
+  { name: 'Event', posts: 6, value: 1.5, avgViews: '22.0K', score: 100, color: '#FFEAA7' },
+];
+
+const topPosts = [
+  { id: 1, metric: 'ER', value: '12.4%', label: 'Engagement Rate' },
+  { id: 2, metric: 'Likes', value: '847K', label: 'Total Likes' },
+  { id: 3, metric: 'Comments', value: '23.5K', label: 'Total Comments' },
+  { id: 4, metric: 'Shares', value: '145K', label: 'Total Shares' },
 ];
 
 export function MarketIntelligence() {
@@ -276,6 +304,167 @@ export function MarketIntelligence() {
               </CardContent>
             </Card>
           </div>
+
+          {/* Weekly Postings and Performance Chart */}
+          <Card className="border-slate-200">
+            <CardHeader>
+              <div className="flex items-center gap-2">
+                <BarChart3 className="w-5 h-5 text-blue-600" />
+                <CardTitle>Weekly postings and performance</CardTitle>
+              </div>
+              <CardDescription>Track posting frequency and engagement metrics over time</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="h-[400px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={weeklyData}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                    <XAxis 
+                      dataKey="date" 
+                      stroke="#64748b"
+                      tick={{ fontSize: 12 }}
+                      tickFormatter={(date) => new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                    />
+                    <YAxis 
+                      yAxisId="left"
+                      stroke="#64748b"
+                      tick={{ fontSize: 12 }}
+                      label={{ value: 'Posts', angle: -90, position: 'insideLeft' }}
+                    />
+                    <YAxis 
+                      yAxisId="right"
+                      orientation="right"
+                      stroke="#64748b"
+                      tick={{ fontSize: 12 }}
+                      label={{ value: 'Performance', angle: 90, position: 'insideRight' }}
+                    />
+                    <Tooltip 
+                      contentStyle={{ 
+                        backgroundColor: 'white', 
+                        border: '1px solid #e2e8f0',
+                        borderRadius: '8px',
+                        padding: '12px'
+                      }}
+                    />
+                    <Legend />
+                    <Bar yAxisId="left" dataKey="posts" fill="#10b981" name="Posts" />
+                    <Line 
+                      yAxisId="right" 
+                      type="monotone" 
+                      dataKey="performance" 
+                      stroke="#ff6b6b" 
+                      strokeWidth={2}
+                      dot={{ fill: '#ff6b6b', r: 6 }}
+                      name="Performance"
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Content Category Analysis */}
+          <div>
+            <h3 className="text-slate-900 mb-4">Analysis by content category</h3>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {/* Pie Chart */}
+              <Card className="border-slate-200">
+                <CardHeader>
+                  <CardTitle className="text-lg">Content Distribution</CardTitle>
+                  <CardDescription>Breakdown by content type</CardDescription>
+                </CardHeader>
+                <CardContent className="p-6">
+                  <div style={{ width: '100%', height: '400px' }}>
+                    <ResponsiveContainer width="100%" height="100%">
+                      <PieChart>
+                        <Pie
+                          data={contentCategories}
+                          dataKey="value"
+                          nameKey="name"
+                          cx="50%"
+                          cy="50%"
+                          outerRadius={120}
+                          innerRadius={70}
+                          fill="#8884d8"
+                          paddingAngle={3}
+                          label={(entry) => `${entry.name}: ${entry.value}%`}
+                        >
+                          {contentCategories.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={entry.color} />
+                          ))}
+                        </Pie>
+                        <Tooltip formatter={(value) => `${value}%`} />
+                        <Legend />
+                      </PieChart>
+                    </ResponsiveContainer>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Category Details */}
+              <Card className="border-slate-200">
+                <CardHeader>
+                  <CardTitle className="text-lg">Engagement by category</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  {contentCategories.map((category) => (
+                    <div key={category.name} className="flex items-center justify-between">
+                      <div className="flex items-center gap-3 flex-1">
+                        <div 
+                          className="w-3 h-3 rounded-full flex-shrink-0" 
+                          style={{ backgroundColor: category.color }}
+                        />
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <p className="text-sm text-slate-900">{category.name}</p>
+                          </div>
+                          <p className="text-xs text-slate-500">
+                            {category.posts} posts ({category.value} %) • {category.avgViews} avg views
+                          </p>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-lg text-slate-900">{category.score}</div>
+                        <p className="text-xs text-slate-500">/100</p>
+                        <p className="text-xs text-slate-400">Performance Score</p>
+                      </div>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* Top Performing Posts */}
+          <Card className="border-slate-200">
+            <CardHeader>
+              <div className="flex items-center gap-2">
+                <TrendingIcon className="w-5 h-5 text-green-600" />
+                <CardTitle>Top Performing Posts</CardTitle>
+              </div>
+              <CardDescription>Key metrics from your best-performing content</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="flex flex-wrap gap-3">
+                {topPosts.map((post) => (
+                  <button
+                    key={post.id}
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 hover:border-blue-300 hover:bg-blue-50 transition-colors"
+                  >
+                    {post.metric === 'ER' && <TrendingUp className="w-4 h-4 text-green-600" />}
+                    {post.metric === 'Likes' && <Heart className="w-4 h-4 text-red-500" />}
+                    {post.metric === 'Comments' && <MessageSquare className="w-4 h-4 text-blue-500" />}
+                    {post.metric === 'Shares' && <ArrowUp className="w-4 h-4 text-purple-500" />}
+                    <div className="text-left">
+                      <div className="text-sm text-slate-900">{post.metric}</div>
+                      <div className="text-xs text-slate-500">{post.label}</div>
+                    </div>
+                    <div className="text-lg font-semibold text-slate-900 ml-2">{post.value}</div>
+                  </button>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
         </TabsContent>
 
         <TabsContent value="microtrends" className="space-y-6 mt-6">

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Textarea } from './ui/textarea';
 import { Checkbox } from './ui/checkbox';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
 import { FileText, CheckCircle, Search, TrendingUp, Globe } from 'lucide-react';
 
 interface HomepageProps {
@@ -36,14 +36,14 @@ export function Homepage({ onSignIn }: HomepageProps) {
     password: '',
   });
 
-  const handleEmailSubmit = (e: React.FormEvent) => {
+  const handleEmailSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (email) {
       setShowBusinessLogin(true);
     }
   };
 
-  const handleInfluencerSubmit = (e: React.FormEvent) => {
+  const handleInfluencerSubmit = (e: FormEvent) => {
     e.preventDefault();
     
     if (!influencerFormData.consent) {
@@ -67,7 +67,7 @@ export function Homepage({ onSignIn }: HomepageProps) {
     setShowInfluencerForm(false);
   };
 
-  const handleBusinessLogin = (e: React.FormEvent) => {
+  const handleBusinessLogin = (e: FormEvent) => {
     e.preventDefault();
     
     if (businessLoginData.email && businessLoginData.password) {
