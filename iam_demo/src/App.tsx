@@ -91,7 +91,7 @@ export default function App() {
                 onClick={handleBackToHomepage}
                 className="flex items-center gap-3 hover:opacity-80 transition-opacity"
               >
-                <h1 className="text-slate-900">IAM</h1>
+                <h1 className="text-2xl font-bold text-slate-900">IAM</h1>
               </button>
               
               <div className="flex items-center gap-3">
@@ -132,7 +132,7 @@ export default function App() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-                  <h1 className="text-slate-900">IAM</h1>
+                  <h1 className="text-2xl font-bold text-slate-900">IAM</h1>
                   <ChevronDown className="w-4 h-4 text-slate-600" />
                 </button>
               </DropdownMenuTrigger>

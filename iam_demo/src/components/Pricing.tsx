@@ -47,7 +47,7 @@ export function Pricing() {
             <CardTitle>Starter</CardTitle>
             <CardDescription>Perfect for small businesses getting started</CardDescription>
             <div className="mt-4">
-              <div className="text-4xl text-slate-900">$2.99</div>
+              <div className="text-4xl text-slate-900">$59.90</div>
               <p className="text-sm text-slate-600 mt-1">per month</p>
             </div>
           </CardHeader>
@@ -91,7 +91,7 @@ export function Pricing() {
             <CardTitle>Professional</CardTitle>
             <CardDescription>For growing brands and agencies</CardDescription>
             <div className="mt-4">
-              <div className="text-4xl text-slate-900">$7.99</div>
+              <div className="text-4xl text-slate-900">$149.90</div>
               <p className="text-sm text-slate-600 mt-1">per month</p>
             </div>
           </CardHeader>
@@ -210,7 +210,7 @@ export function Pricing() {
                 </li>
               </ul>
               <div className="pt-4">
-                <div className="text-2xl text-slate-900">$1.99</div>
+                <div className="text-2xl text-slate-900">$5.99</div>
                 <p className="text-xs text-slate-600">one-time purchase</p>
               </div>
               <Button className="w-full bg-purple-600 hover:bg-purple-700">
@@ -246,7 +246,7 @@ export function Pricing() {
               </ul>
               <div className="pt-4">
                 <div className="text-2xl text-slate-900">$3.49</div>
-                <p className="text-xs text-slate-600">per month</p>
+                <p className="text-xs text-slate-600">per transaction</p>
               </div>
               <Button className="w-full bg-orange-600 hover:bg-orange-700">
                 Add to Plan
@@ -280,7 +280,7 @@ export function Pricing() {
                 </li>
               </ul>
               <div className="pt-4">
-                <div className="text-2xl text-slate-900">$4.99</div>
+                <div className="text-2xl text-slate-900">$14.99</div>
                 <p className="text-xs text-slate-600">per month</p>
               </div>
               <Button className="w-full bg-green-600 hover:bg-green-700">
@@ -305,7 +305,7 @@ export function Pricing() {
               </CardDescription>
             </div>
             <div className="text-right">
-              <div className="text-3xl text-slate-900">$9.99</div>
+              <div className="text-3xl text-slate-900">$24.90</div>
               <p className="text-sm text-slate-600">one-time</p>
             </div>
           </div>
