@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Play, Info, TrendingUp, DollarSign, ExternalLink, MapPin, BarChart3, ArrowRight, Sparkles, X } from 'lucide-react';
+import { LockKeyhole, Info, TrendingUp, DollarSign, ExternalLink, MapPin, BarChart3, ArrowRight, Sparkles, X } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Label } from './ui/label';
@@ -407,8 +407,8 @@ export function Simulator({ onViewRecommendations, simulatorData }: SimulatorPro
                   <>Processing...</>
                 ) : (
                   <>
-                    <Play className="w-4 h-4 mr-2" />
-                    Run Prediction
+                    <LockKeyhole className="w-4 h-4 mr-2" />
+                    Run Prediction ($24.90)
                   </>
                 )}
               </Button>
@@ -421,7 +421,7 @@ export function Simulator({ onViewRecommendations, simulatorData }: SimulatorPro
               <Card className="border-slate-200 bg-gradient-to-br from-blue-50 to-white h-full">
                 <CardContent className="flex flex-col items-center justify-center py-16 px-8 text-center h-full">
                   <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                    <Play className="w-10 h-10 text-blue-600" />
+                    <LockKeyhole className="w-10 h-10 text-blue-600" />
                   </div>
                   <h3 className="text-slate-900 mb-2">Configure parameters and run prediction to see results</h3>
                   <p className="text-sm text-slate-600 max-w-md">

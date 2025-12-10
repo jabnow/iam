@@ -47,7 +47,7 @@ export function Pricing() {
             <CardTitle>Starter</CardTitle>
             <CardDescription>Perfect for small businesses getting started</CardDescription>
             <div className="mt-4">
-              <div className="text-4xl text-slate-900">$59.90</div>
+              <div className="text-4xl text-slate-900">$49.90</div>
               <p className="text-sm text-slate-600 mt-1">per month</p>
             </div>
           </CardHeader>
@@ -245,7 +245,7 @@ export function Pricing() {
                 </li>
               </ul>
               <div className="pt-4">
-                <div className="text-2xl text-slate-900">$3.49</div>
+                <div className="text-2xl text-slate-900">$30.49</div>
                 <p className="text-xs text-slate-600">per transaction</p>
               </div>
               <Button className="w-full bg-orange-600 hover:bg-orange-700">
