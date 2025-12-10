@@ -1,4 +1,4 @@
-text.vercel/ 
-.next/ 
-dist/ 
-build/
+/text.vercel/ 
+/.next/ 
+/dist/ 
+/build/
